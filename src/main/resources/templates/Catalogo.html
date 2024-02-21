@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+	<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
+      <title>Catálogo de Productos</title>
+</head>
+<body>
+    <nav class="nav1">
+        <a th:href="@{/inicio/VendedorPrincipal}">    <img th:src="@{/img/logo2.JPG}" alt="Logo" />
+</a>
+        <ul class="ul1">
+            <li class="prim">
+                <a th:href="@{/inicio/Catalogo}">Catálogo</a>
+            </li>
+            <li class="prim">
+                <a th:href="@{/inicio/Ordenar}">Ordenar</a>
+            </li>
+            <li class="prim">
+                <a th:href="@{/inicio/Historial}">Historial de Pedidos</a>
+            </li>
+         
+        </ul>
+        <div class="navigation">
+            <div class="user-dropdown">
+                <button class="user-btn">
+                    <i class="user-icon fa-solid fa-user" id="admin"></i> Vendedor
+                    <i class="arrow-icon fa-solid fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">Cambiar Perfil</a>
+                    <a href="#">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>    </nav>
+    <nav class="nav2">
+        <ul class="ul2">
+            <li>
+                <a href="#"><i class="fa-solid fa-cake-candles"></i>Pasteles</a>
+            </li>
+            <li>
+                <a href="#"> <i class="fas fa-pie-chart"></i>Porciones</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa-solid fa-whiskey-glass"></i>Bebidas</a>
+            </li>
+            
+        </ul>
+
+    </nav>
+<br><br><br>
+    <div class="busybtn">
+        <div class="search-container">
+            <input type="text" placeholder="Buscar...">
+            <button id="botonbus" type="submit"><i class="fas fa-search"></i></button>
+        <a href="../paginas/Ordenar.html"><button id="boton" class="order-button">  Ordenar <i class="fas fa-shopping-cart"></i></button></a></div>
+        
+    </div>
+    
+    <div class="cake-container">
+        <div class="cake-item">
+            <img th:src="@{/img/pastel.jpeg}" alt="Pastel 1"><br><br>
+            <p>Torta de Chocolate</p><br>
+            <p>Precio: S/10.00</p><br>
+            <button onclick="mostrarModal()">Añadir al carrito</button>
+        </div>
+        <div class="cake-item">
+            <img th:src="@{/img/pastel.jpeg}"  alt="Pastel 2"><br><br>
+            <p>Torta Red Velvet</p><br>
+            <p>Precio: S/15.00</p><br>
+            <button onclick="mostrarModal()">Añadir al carrito</button>
+        </div>
+        <div class="cake-item">
+            <img th:src="@{/img/pastel.jpeg}"  alt="Pastel 3"><br><br>
+            <p>Torta de Zanahoria</p><br>
+            <p>Precio: S/20.00</p><br>
+            <button onclick="mostrarModal()">Añadir al carrito</button>
+        </div>
+        
+    </div>
+    <div class="cake-container">
+        <div class="cake-item">
+            <img th:src="@{/img/pastel.jpeg}"  alt="Pastel 1"><br><br>
+            <p>Torta de Chocolate</p><br>
+            <p>Precio: S/10.00</p><br>
+            <button onclick="mostrarModal()">Añadir al carrito</button>
+        </div>
+        <div class="cake-item">
+            <img th:src="@{/img/pastel.jpeg}"  alt="Pastel 2"><br><br>
+            <p>Torta Red Velvet</p><br>
+            <p>Precio: S/15.00</p><br>
+            <button onclick="mostrarModal()">Añadir al carrito</button>
+        </div>
+        <div class="cake-item">
+            <img th:src="@{/img/pastel.jpeg}"  alt="Pastel 3"><br><br>
+            <p>Torta de Zanahoria</p><br>
+            <p>Precio: S/20.00</p><br>
+            <button onclick="mostrarModal()">Añadir al carrito</button>
+        </div>
+        
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal()">&times;</span>
+            <p>Añadido correctamente</p>
+            <button class="purple-button" onclick="continuarCompra()">Continuar compra</button>
+            <button class="purple-button" onclick="culminarCompra()">Culminar compra</button>
+        </div>
+    </div>
+<script th:src="@{/js/main.js}"></script></body>
+</html>
