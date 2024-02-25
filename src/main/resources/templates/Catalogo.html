@@ -102,13 +102,18 @@
         
     </div>
 
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="cerrarModal()">&times;</span>
-            <p>Añadido correctamente</p>
-            <button class="purple-button" onclick="continuarCompra()">Continuar compra</button>
-            <button class="purple-button" onclick="culminarCompra()">Culminar compra</button>
-        </div>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModal()">&times;</span>
+        <p>Añadido correctamente</p>
+        <button class="purple-button" onclick="continuarCompra()">Continuar compra</button>
+        <a th:href="@{/inicio/Ordenar}"><button class="purple-button">Culminar compra</button></a>
     </div>
+    <div>
+        <button onclick="restarCantidad()">-</button>
+        <span id="cantidadProducto">1</span>
+        <button onclick="sumarCantidad()">+</button>
+    </div>
+</div>
 <script th:src="@{/js/main.js}"></script></body>
 </html>

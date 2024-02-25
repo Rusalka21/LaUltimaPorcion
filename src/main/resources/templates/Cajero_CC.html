@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+	<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
+      <title>Cierre de Caja</title>
+</head>
+<body>
+    <nav class="nav1">
+        <a th:href="@{/cajero/inicio}">    <img th:src="@{/img/logo2.JPG}" alt="Logo" />
+</a>
+        <ul class="ul1">
+            <li class="prim">
+                <a th:href="@{/cajero/grabarventa}">Gestión Ventas</a>
+            </li>
+            <li class="prim">
+                <a th:href="@{/cajero/clientes}">Clientes</a>
+            </li>
+            <li class="prim">
+                <a th:href="@{/cajero/historialventas}">Historial de Ventas</a>
+            </li>
+            <li class="prim">
+                <a th:href="@{/cajero/cierrecaja}">Cierre de Caja</a>
+            </li>
+         
+         
+        </ul>
+        <div class="navigation">
+            <div class="user-dropdown">
+                <button class="user-btn">
+                    <i class="user-icon fa-solid fa-user" id="admin"></i> Cajero
+                    <i class="arrow-icon fa-solid fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">Cambiar Perfil</a>
+                    <a href="#">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>    </nav>
+   <div class="cuadro-cierre-caja"><br><br>
+        <h2>Cierre de Caja</h2><br><br>
+        
+        <div class="detalles-cierre">
+            <label for="fecha">Fecha:</label>
+            <input type="text" id="fecha" value="Fecha Actual" disabled>
+    
+            <label for="usuario">Usuario:</label>
+            <input type="text" id="usuario" value="Nombre de Usuario" disabled>
+    
+            <label for="fechaCierre">Fecha de Cierre:</label>
+            <input type="date" id="fechaCierre" placeholder="Ingrese la fecha de cierre">
+
+            <label for="estado">Estado:</label>
+            <input type="text" id="estado" placeholder="Ingrese el estado">
+    
+            <label for="saldoApertura">Saldo de Apertura:</label>
+            <input type="text" id="saldoApertura" placeholder="Ingrese el saldo de apertura">
+    
+            <label for="saldoEfectivo">Saldo Efectivo:</label>
+            <input type="text" id="saldoEfectivo" placeholder="Ingrese el saldo efectivo">
+    
+            <label for="pagoTarjeta">Pago con Tarjeta:</label>
+            <input type="text" id="pagoTarjeta" placeholder="Ingrese el pago con tarjeta">
+    
+            <label for="ingresosReales">Ingresos Reales:</label>
+            <input type="text" id="ingresosReales" placeholder="Ingrese los ingresos reales">
+        </div>
+    
+        <button onclick="cerrarCaja()">Cerrar Caja</button>
+    
+        <div class="resumen-pago">
+            <h3>Resumen de Métodos de Pago</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Forma de Pago</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>APERTURA</td>
+                        <td id="totalApertura">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>EFECTIVO</td>
+                        <td id="totalEfectivo">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>INGRESO</td>
+                        <td id="totalIngreso">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>SALIDA</td>
+                        <td id="totalSalida">0.00</td>
+                    </tr>
+                    <tr>
+                        <td>TARJETA DE CRÉDITO</td>
+                        <td id="totalTarjeta">0.00</td>
+                    </tr>
+                     <tr>
+                        <td>TOTAL</td>
+                        <td id="total">0.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+        <button onclick="imprimir()">Imprimir</button>
+          <a th:href="@{/cajero/inicio}"><button onclick="regresar()">Regresar</button></a>
+    </div>
+    
+            <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/inicio")
-public class principal_controller {
+public class Vendedor_controller {
 	
 	@GetMapping("/VendedorPrincipal")
 	public String showIndex() {
@@ -26,6 +26,11 @@ public class principal_controller {
 	    @GetMapping("/Historial")
 	    public String mostrarHistorial() {
 	        return "Historial";
+	    }
+	    
+	    @GetMapping("/Login")
+	    public String mostrarLogin() {
+	        return "Login";
 	    }
 	
 }
