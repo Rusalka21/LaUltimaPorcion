@@ -103,7 +103,7 @@ nav ul .prim a{
     display: flex;
     justify-content: left; 
     max-width: 1800px; 
-    margin: 30px 20px; 
+    margin:10px 10px; 
 }
 
 .busybtn input {
@@ -255,26 +255,26 @@ button:hover {
 }
 
 /*Ordenar*/
-.order-container {
+.order-containerVend{
     margin: 15%;
-    width: 70%;
+    font-size: 20px;
+    margin-top: 2%;
     text-align: center;
     background-color: #fff;
-    margin-top:4%;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-table {
-    margin: 15%;
-    width: 70%;
+.order-containerVend table {
+    margin: 10%;
+    width: 80%;
     margin-top: 20px;
     border-collapse: collapse;
 }
 
 table, th, td {
-    border: 1px solid #ddd;
+    border: 1px solid rgb(199, 147, 241);
 }
 
 th, td {
@@ -283,8 +283,9 @@ th, td {
 }
 
 th {
-    background-color: #deb5ec;
-    color: white;
+    
+    background-color: #b36cca;
+    color: rgb(102, 100, 100);
 }
 
  .order-summary {
@@ -293,7 +294,7 @@ th {
 }
 
 .purple-button {
-    background-color: #deb5ec;
+    background-color: #c083d4;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -303,11 +304,11 @@ th {
 }
 
 .purple-button:hover {
-    background-color: #deb5ec;
+    background-color: #522d5e;
 }
 
 /* Estilos para el popup */
-.popup {
+.popupVend {
     display: none;
     position: fixed;
     top: 0;
@@ -744,7 +745,7 @@ button {
 .popup {
     width: 15%; 
     position: fixed;
-    height:25%;
+    height:10%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -769,4 +770,36 @@ button {
     font-size: 18px;
 }
 
+/*BOTONES Admin*/
 
+.Botones {
+    display: flex;
+    align-items: center; 
+   
+}
+
+button {
+    margin:  10px; 
+}
+
+#Inventario{
+    height: 1300px;
+}
+
+.EditarProd{
+    font-size: 22px;
+}
+
+/*sesion*/
+
+.Sesion{
+    display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+}
+
+
+.Ingresar button{
+    margin: 15%;
+}

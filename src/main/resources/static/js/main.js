@@ -18,7 +18,7 @@ function culminarCompra() {
     cerrarModal();
 
     // Redirige a la página de ordenar
-    window.location.href = "../paginas/Ordenar.html";
+     window.location.href = "@{/inicio/Ordenar}";
 }
 
 /*Ordenar*/
@@ -108,7 +108,7 @@ function mostrarPopup(message) {
 
 
 function cerrarPopup() {
-    popup.style.display = 'none';
+    document.getElementById('popup').style.display = 'none';
 }
 
 function imprimirPedido() {
@@ -129,7 +129,7 @@ let cantidadSeleccionada = 1;
 function mostrarModal(nombreProducto) {
     const modal = document.getElementById("modal");
     modal.style.display = "block";
-    
+
     // Actualiza el contenido del modal con el nombre del producto
     const modalContent = document.querySelector(".modal-content");
     modalContent.innerHTML = `
@@ -145,6 +145,10 @@ function mostrarModal(nombreProducto) {
         <button class="purple-button" onclick="culminarCompra()">Ir al carrito</button>
     `;
 }
+
+document.getElementById('realizarPedidoBtn').addEventListener('click', function() {
+    realizarPedido();
+});
 
 function sumarCantidad() {
     cantidadSeleccionada++;

@@ -29,12 +29,12 @@
                     <i class="arrow-icon fa-solid fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="#">Cambiar Perfil</a>
-                    <a href="#">Cerrar Sesión</a>
+                     <a th:href="@{/inicio/Login}">Cambiar Perfil</a>
+                    <a th:href="@{/inicio/Cerrar}">Cerrar Sesión</a>
                 </div>
             </div>
         </div>    </nav>
-    <div class="order-container">
+<div class="history-container">
         <h2>Orden de compra</h2>
         <table>
             <thead>
@@ -64,19 +64,18 @@
         </table>
         <div class="order-summary">
             <p>Total: <span id="total">S/ 0.00</span></p>
-            <button class="purple-button" onclick="realizarPedido()">Ordenar</button>
+<button class="purple-button" id="realizarPedidoBtn">Ordenar</button>
         </div>
     </div>
-    
-    <!-- Popup para el mensaje de pedido realizado -->
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <span class="close" onclick="cerrarPopup()">&times;</span>
-            <p id="popup-message"></p>
-            <button class="purple-button" onclick="imprimirPedido()">Imprimir</button>
-            <button class="purple-button" onclick="cerrarPopup()">Cerrar</button>
-        </div>
-    </div>
+  <!-- Popup para el mensaje de pedido realizado -->
+<!--<div id="popup" class="popupVend">-->
+   <!--  <div class="popup-content">-->
+         <!--   <span class="close" onclick="cerrarPopup()">&times;</span>-->
+           <!-- <p id="popup-message"></p>-->-->
+           <!-- <button class="purple-button" onclick="imprimirPedido()">Imprimir</button>-->
+           <!-- <button class="purple-button" onclick="cerrarPopup()">Cerrar</button>-->
+       <!-- </div>-->
+   <!-- </div>-->
 <script th:src="@{/js/main.js}"></script>
 </body>
 </html>

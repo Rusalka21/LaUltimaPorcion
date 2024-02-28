@@ -17,6 +17,16 @@ public class Vendedor_controller {
 	    public String mostrarCatalogo() {
 	        return "Catalogo";
 	    }
+	 
+	 @GetMapping("/CatalogoPorciones")
+	    public String mostrarCatalogoPorciones() {
+	        return "Catalogo_Porciones";
+	    }
+	 
+	 @GetMapping("/CatalogoBebidas")
+	    public String mostrarCatalogoBebidas() {
+	        return "Catalogo_bebidas";
+	    }
 
 	    @GetMapping("/Ordenar")
 	    public String mostrarOrdenar() {
@@ -33,4 +43,8 @@ public class Vendedor_controller {
 	        return "Login";
 	    }
 	
+	    @GetMapping("/Cerrar")
+	    public String mostrarCerrar() {
+	        return "Cerrar_Sesion";
+	    }
 }

@@ -5,25 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/style.css}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
-      <title>Editar Cliente</title>
+      <title>Inicio</title>
 </head>
 <body>
     <nav class="nav1">
-       <a th:href="@{/cajero/inicio}">
+      <a th:href="@{/admin/admininicio}">
     	<img th:src="@{/img/logo2.JPG}" alt="Logo" />
 		</a>
         <ul class="ul1">
             <li class="prim">
-                <a th:href="@{/cajero/grabarventa}">Gestión Ventas</a>
+                <a th:href="@{/admin/adminpedidos}">Historial de Pedidos</a>
             </li>
             <li class="prim">
-                <a th:href="@{/cajero/clientes}">Clientes</a>
+                <a th:href="@{/admin/admininventario}">Inventario</a>
             </li>
             <li class="prim">
-                <a th:href="@{/cajero/historialventas}">Historial de Ventas</a>
+                <a th:href="@{/admin/admingestionclientes}">Gestión Clientes</a>
             </li>
             <li class="prim">
-                <a th:href="@{/cajero/cierrecaja}">Cierre de Caja</a>
+                <a th:href="@{/admin/adminusuarios}">Gestión de Usuarios</a>
             </li>
          
          
@@ -40,9 +40,12 @@
                 </div>
             </div>
         </div>    </nav>
-         <form class="Clientes" action="" method="POST"><br><br>
+       <form class="Clientes" action="" method="POST"><br><br>
         <h1>Editar Cliente</h1><br><br>
-        
+
+        <label for="id">Id:</label>
+        <input type="text" id="id" name="id" required>
+
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required>
 
@@ -60,8 +63,9 @@
 
         <button class="botonLimp" type="submit">Limpiar</button>
         <button type="submit">Guardar Cambios</button>
-               <a th:href="@{/cajero/clientes}"><button onclick="regresar()">Regresar</button></a>
+        <a href="../paginas/Admin_Inicio.html"><button onclick="regresar()">Regresar</button></a>
            </form>
-        <script th:src="@{/js/main.js}"></script>
+
+            <script th:src="@{/js/main.js}"></script>
 </body>
 </html>
