@@ -180,6 +180,10 @@ function regresar() {
     alert("Volviendo atrás...");
 }
 
+function eliminar() {
+    alert("Registro eliminado");
+}
+
 /*Pago*/
 // Función para mostrar el popup de pago exitoso
 function realizarPago() {
@@ -192,3 +196,6 @@ function realizarPago() {
 function cerrarPopup() {
     document.getElementById("popupPagoExitoso").style.display = "none";
 } 
+
+
+

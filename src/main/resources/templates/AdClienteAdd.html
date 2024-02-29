@@ -40,29 +40,44 @@
                 </div>
             </div>
         </div>    </nav>
-       <form class="Clientes" action="" method="POST"><br><br>
+       <form class="Clientes" action="/admin/adclienteadd" method="post"><br><br>
         <h1>Agregar Cliente</h1><br><br>
         
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required>
 
-        <label for="apellido">Apellido:</label>
-        <input type="text" id="apellido" name="apellido" required>
+        <label for="apellidos">Apellido:</label>
+        <input type="text" id="apellidos" name="apellidos" required>
+        
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" name="dni" required>
 
         <label for="email">Correo Electrónico:</label>
         <input type="email" id="email" name="email" required>
 
-        <label for="email">Dirección:</label>
-        <input type="email" id="email" name="email" required>
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" required>
 
-        <label for="email">Número:</label>
-        <input type="email" id="email" name="email" required>
+        <label for="celular">Número:</label>
+        <input type="text" id="celular" name="celular" required>
 
-        <button class="botonLimp" type="submit">Limpiar</button>
+        <button class="botonLimp" type="button" onclick="clearForm()">Limpiar</button>
         <button type="submit">Guardar Cambios</button>
-        <a href="../paginas/Admin_Inicio.html"><button onclick="regresar()">Regresar</button></a>
+        <a th:href="@{/admin/admingestionclientes}"><button type="button" onclick="regresar()">Regresar</button></a>
+        
            </form>
 
             <script th:src="@{/js/main.js}"></script>
+            <script>
+    function clearForm() {
+        // Get all input fields by their IDs and set their values to an empty string
+        document.getElementById("nombre").value = "";
+        document.getElementById("apellidos").value = "";
+        document.getElementById("dni").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("direccion").value = "";
+        document.getElementById("celular").value = "";
+    }
+</script>
 </body>
 </html>
