@@ -54,16 +54,18 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody id="history-list">
+            <tbody th:each="cliente:${clientes}" id="history-list">
                 <tr>
-                    <td>id</td>
-                    <td>hola</td>
-                    <td>hola</td>
-                    <td>hola</td>
-                    <td>hola</td>
-                    <td><a th:href="@{/admin/adclienteedit}">
-                        <button><i class="fa-solid fa-pen-to-square"></i></button>
-                    </a><button><i class="fa-solid fa-trash"></i></button></td>
+                    <td th:text="${cliente.cod_cliente}"></td>
+                    <td th:text="${cliente.nombre}"></td>
+                    <td th:text="${cliente.dni}"></td>
+                    <td th:text="${cliente.email}"></td>
+                    <td th:text="${cliente.celular}"></td>                    
+                    <td>
+						<a th:href="@{'/admin/adclienteedit/' + ${cliente.cod_cliente} }">
+                        	<button type="button" ><i class="fa-solid fa-pen-to-square"></i></button></a>
+                    	<a th:href="@{'/admin/deletecliente/' + ${cliente.cod_cliente} }">
+							<button type="button" onclick="eliminar()"><i class="fa-solid fa-trash"></i></button></a></td>
                 </tr>           
                 </tbody>
         </table>
