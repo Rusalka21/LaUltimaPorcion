@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.model.Cliente;
+import com.example.demo.model.Usuario;
 import com.example.demo.service.ClienteService;
+import com.example.demo.service.UsuarioService;
 
 @Controller
 @RequestMapping("/admin")
@@ -20,6 +22,9 @@ public class Admin_Controller {
 	
 	@Autowired
 	private ClienteService clienteService;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 
     @GetMapping("/admininicio")
     public String mostrarAdminInicio() {
@@ -42,14 +47,115 @@ public class Admin_Controller {
     }
 
     @GetMapping("/adminpedidos")
-    public String mostrarAdminPedidos() {
+    public String mostrarAdminPedidos(Model model) {
+    	
+    	
+    	
         return "AdminPedidos";
     }
 
     @GetMapping("/adminusuarios")
-    public String mostrarAdminUsuarios() {
+    public String mostrarAdminUsuarios(Model model) {
+    	
+    	List<Usuario> listUsuario = usuarioService.getAllUsuario();
+    	
+    	model.addAttribute("usuarios", listUsuario);
+    	
         return "AdminUsuarios";
     }
+    
+    @GetMapping("/usuariosadd")
+    public String mostrarUsuariosAdd() {    	
+    	   	
+        return "UsuariosAdd";
+    }
+    
+    @PostMapping("/adusuarioadd")
+    public String createUsuario(@RequestParam(name = "nombre")String nombre,
+    		@RequestParam(name = "apellidos")String apellidos,
+    		@RequestParam(name = "dni")Long dni,
+    		@RequestParam(name = "email")String email,
+    		@RequestParam(name = "celular")Long celular,
+    		@RequestParam(name = "username")String username,
+    		@RequestParam(name = "contrasena")String contrasena,
+    		@RequestParam(name = "tipo_usuario")String tipo_usuario,
+    		Model model) {
+    	
+    	Usuario usuario = new Usuario();
+    	
+    	usuario.setNombre(nombre);
+    	usuario.setApellidos(apellidos);
+    	usuario.setDni(dni);
+    	usuario.setEmail(email);
+    	usuario.setCelular(celular);
+    	usuario.setUsername(username);
+    	usuario.setContrasena(contrasena);
+    	usuario.setTipo_usuario(tipo_usuario);
+    	
+    	usuarioService.createUsuario(usuario);
+    	
+    	List<Usuario> listUsuario = usuarioService.getAllUsuario();
+    	
+    	model.addAttribute("usuarios", listUsuario);
+    	
+    	return "AdminUsuarios";
+    }
+    
+    @GetMapping("/usuariosedit/{id_usuario}")
+    public String mostrarUsuariosEdit(@PathVariable int id_usuario, Model model) {
+    	
+    	Usuario usuario = usuarioService.getUsuarioById(id_usuario);
+    	
+    	model.addAttribute("usuario", usuario);
+    	
+        return "UsuariosEdit";
+    }
+    
+    @PostMapping("/usuariosedit")
+    public String editUsuario(@RequestParam(name = "id_usuario") int id_usuario,
+    		@RequestParam(name = "nombre") String nombre,
+    		@RequestParam(name = "apellidos") String apellidos,
+    		@RequestParam(name = "dni") Long dni,
+    		@RequestParam(name = "email") String email,
+    		@RequestParam(name = "celular") Long celular,
+    		@RequestParam(name = "username") String username,
+    		@RequestParam(name = "contrasena") String contrasena,
+    		@RequestParam(name = "tipo_usuario") String tipo_usuario,
+    		Model model) {
+    	
+    	Usuario usuario = usuarioService.getUsuarioById(id_usuario);
+    	
+    	usuario.setNombre(nombre);
+    	usuario.setApellidos(apellidos);
+    	usuario.setDni(dni);
+    	usuario.setEmail(email);
+    	usuario.setCelular(celular);
+    	usuario.setUsername(username);
+    	usuario.setContrasena(contrasena);
+    	usuario.setTipo_usuario(tipo_usuario);
+    	
+    	usuarioService.createUsuario(usuario);
+    	
+    	List<Usuario> listUsuario = usuarioService.getAllUsuario();
+    	
+    	model.addAttribute("usuarios", listUsuario);
+    	
+    	return "AdminUsuarios";   	
+    	
+    }
+    
+    @GetMapping("/deleteusuario/{id_usuario}")
+    public String deleteUsuario(@PathVariable int id_usuario, Model model) {
+    	
+    	usuarioService.deleteUsuario(id_usuario);
+    	
+    	List<Usuario> listUsuario = usuarioService.getAllUsuario();
+    	
+    	model.addAttribute("usuarios", listUsuario);
+    	
+    	return "AdminUsuarios";
+    }
+    
 
     @GetMapping("/inventarioadd")
     public String mostrarInventarioAdd() {
@@ -142,16 +248,8 @@ public class Admin_Controller {
     	
     	return "AdminGestionClientes";
     }
-
-    @GetMapping("/usuariosadd")
-    public String mostrarUsuariosAdd() {
-        return "UsuariosAdd";
-    }
-
-    @GetMapping("/usuariosedit")
-    public String mostrarUsuariosEdit() {
-        return "UsuariosEdit";
-    }
+    
+    
     
     // Otros métodos según necesidades adicionales
 
