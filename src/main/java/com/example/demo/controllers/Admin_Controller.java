@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.model.Cliente;
+import com.example.demo.model.Product;
 import com.example.demo.model.Usuario;
 import com.example.demo.service.ClienteService;
+import com.example.demo.service.ProductService;
 import com.example.demo.service.UsuarioService;
 
 @Controller
@@ -25,6 +27,9 @@ public class Admin_Controller {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+	
+	@Autowired
+	private ProductService productService;
 
     @GetMapping("/admininicio")
     public String mostrarAdminInicio() {
@@ -42,14 +47,100 @@ public class Admin_Controller {
     }
 
     @GetMapping("/admininventario")
-    public String mostrarAdminInventario() {
+    public String mostrarAdminInventario(Model model) {
+    	
+    	List<Product> listProduct = productService.getAllProduct();
+    	
+    	model.addAttribute("products", listProduct);
+    	
         return "AdminInventario";
+    }
+    
+    @GetMapping("/inventarioadd")
+    public String mostrarInventarioAdd() {
+        return "InventarioAdd";
+    }
+    
+    @PostMapping("/inventarioadd")
+    public String createProduct(@RequestParam(name= "nombre") String nombre,
+    		@RequestParam(name= "tipo") String tipo,
+    		@RequestParam(name= "unidad") String unidad,
+    		@RequestParam(name= "descripcion") String descripcion,
+    		@RequestParam(name= "precio") double precio,
+    		@RequestParam(name= "stock") int stock,
+    		Model model) {
+    	
+    	Product product = new Product();
+    	
+    	product.setNombre(nombre);
+    	product.setTipo(tipo);
+    	product.setUnidad(unidad);
+    	product.setDescripcion(descripcion);
+    	product.setPrecio(precio);
+    	product.setStock(stock);
+    	
+    	productService.createProduct(product);
+    	
+    	List<Product> listProduct = productService.getAllProduct();
+    	
+    	model.addAttribute("products", listProduct);    	
+    	
+    	return "AdminInventario";
+    }
+    
+    @GetMapping("/inventarioedit/{id_producto}")
+    public String mostrarInventarioEdit(@PathVariable int id_producto, Model model) {
+    	
+    	Product product = productService.getProductById(id_producto);
+    	
+    	model.addAttribute("product", product); 	    	
+    	
+        return "InventarioEdit";
+    }
+    
+    @PostMapping("/inventarioedit")
+    public String editProduct(@RequestParam(name = "id_producto") int id_producto,
+    		@RequestParam(name = "nombre") String nombre,
+    		@RequestParam(name = "tipo") String tipo,
+    		@RequestParam(name = "unidad") String unidad,
+    		@RequestParam(name = "descripcion") String descripcion,
+    		@RequestParam(name = "precio") double precio,
+    		@RequestParam(name = "stock") int stock,
+    		Model model) {
+    	
+    	Product product = productService.getProductById(id_producto);
+    	
+    	product.setNombre(nombre);
+    	product.setTipo(tipo);
+    	product.setUnidad(unidad);
+    	product.setDescripcion(descripcion);
+    	product.setPrecio(precio);
+    	product.setStock(stock);
+    	
+    	productService.createProduct(product);
+    	
+    	List<Product> listProduct = productService.getAllProduct();
+    	
+    	model.addAttribute("products", listProduct);
+    	
+    	return "AdminInventario";
+    }
+    
+    @GetMapping("/deleteproduct/{id_producto}")
+    public String deleteProduct(@PathVariable int id_producto,
+    		Model model) {
+    	
+    	productService.deleteProduct(id_producto);
+    	
+    	List<Product> listProduct = productService.getAllProduct();
+    	
+    	model.addAttribute("products", listProduct);
+    	
+    	return "AdminInventario";
     }
 
     @GetMapping("/adminpedidos")
-    public String mostrarAdminPedidos(Model model) {
-    	
-    	
+    public String mostrarAdminPedidos() {    	
     	
         return "AdminPedidos";
     }
@@ -154,18 +245,7 @@ public class Admin_Controller {
     	model.addAttribute("usuarios", listUsuario);
     	
     	return "AdminUsuarios";
-    }
-    
-
-    @GetMapping("/inventarioadd")
-    public String mostrarInventarioAdd() {
-        return "InventarioAdd";
-    }
-
-    @GetMapping("/inventarioedit")
-    public String mostrarInventarioEdit() {
-        return "InventarioEdit";
-    }
+    }    
 
     @GetMapping("/adclienteadd")
     public String mostrarAdClienteAdd() {

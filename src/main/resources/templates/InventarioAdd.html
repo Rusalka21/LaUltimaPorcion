@@ -40,37 +40,49 @@
                 </div>
             </div>
         </div>    </nav>
-         <form class="Clientes" action="" method="POST" id="Inventario"><br><br>
+         <form class="Clientes" action="/admin/inventarioadd" method="post" id="Inventario"><br><br>
         <h1 class="EditarProd"> Agregar Producto</h1><br><br>
-        
-        <label for="codigo">Código:</label>
-<input type="text" id="codigo" name="codigo" readonly style="border: none;" required>
-
+           
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required>
 
-        <label for="Descripción">Descripción:</label>
-        <input type="text" id="Descripción" name="Descripción" required>
+        <div class="form-group">
+			<label for="tipo">Tipo:</label>
+            <select class="form-control" id="tipo" name="tipo">
+				<option value="" disabled selected hidden>Seleccione un tipo de producto</option>
+				<option value="Pastel">Pastel</option>
+				<option value="Porcion">Porción</option>
+				<option value="Bebida">Bebida</option>
+			</select>
+        </div>
+        
+        <label for="unidad">Unidad:</label>
+        <input type="text" id="unidad" name="unidad" required>
+        
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" name="descripcion" required>
+        
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" name="precio" required>
+        
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" name="stock" required>
 
-        <label for="entradas">Entradas:</label>
-<input type="number" id="entradas" name="entradas" required>
-
-<label for="salidas">Salidas:</label>
-<input type="number" id="salidas" name="salidas" required>
-
-        <label for="compra">Precio de Compra:</label>
-        <input type="number" id="compra" name="compra" required>
-
-        <label for="venta">Precio de Venta:</label>
-        <input type="number" id="venta" name="venta" required>
-
-        <label for="total">Total:</label>
-        <input type="number" id="total" name="total" required>
-
-        <button class="botonLimp" type="submit">Limpiar</button>
+        <button class="botonLimp" type="button" onclick="clearForm()">Limpiar</button>
         <button type="submit">Guardar Cambios</button>
-        <a href="../paginas/Cajero_Clientes.html"><button onclick="regresar()">Regresar</button></a>
+        <a th:href="@{/admin/admininventario}"><button type="button" onclick="regresar()">Regresar</button></a>
            </form>
             <script th:src="@{/js/main.js}"></script>
+            <script>
+			    function clearForm() {
+			        // Get all input fields by their IDs and set their values to an empty string
+			        document.getElementById("nombre").value = "";
+			        document.getElementById("tipo").value = "";
+			        document.getElementById("unidad").value = "";
+			        document.getElementById("descripcion").value = "";			        
+			        document.getElementById("precio").value = "";
+			        document.getElementById("stock").value = "";
+			    }
+			</script>
 </body>
 </html>

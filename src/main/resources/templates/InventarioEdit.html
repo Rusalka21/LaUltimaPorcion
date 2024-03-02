@@ -40,36 +40,43 @@
                 </div>
             </div>
         </div>    </nav>
-        <form class="Clientes" action="" method="POST" id="Inventario"><br><br>
+        <form class="Clientes" action="/admin/inventarioedit" method="post" id="Inventario"><br><br>
         <h1 class="EditarProd"> Editar Producto</h1><br><br>
         
-        <label for="codigo">Código:</label>
-<input type="text" id="codigo" name="codigo" readonly style="border: none;" required>
+        <input type="hidden" th:value="${product.id_producto}" name="id_producto">
 
         <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
+        <input type="text" id="nombre" name="nombre"
+        th:value="${product.nombre}" required>
 
-        <label for="Descripción">Descripción:</label>
-        <input type="text" id="Descripción" name="Descripción" required>
+        <div class="form-group">
+			<label for="tipo">Tipo:</label>
+	            <select class="form-control" id="tipo" name="tipo">					
+					<option value="Pastel" th:selected="${product.tipo == 'Pastel'}">Pastel</option>
+					<option value="Porcion" th:selected="${product.tipo == 'Porcion'}">Porción</option>
+					<option value="Bebida" th:selected="${product.tipo == 'Bebida'}">Bebida</option>
+				</select>
+        </div>
 
-        <label for="entradas">Entradas:</label>
-<input type="number" id="entradas" name="entradas" required>
+        <label for="unidad">Unidad:</label>
+		<input type="text" id="unidad" name="unidad"
+		th:value="${product.unidad}" required>
 
-<label for="salidas">Salidas:</label>
-<input type="number" id="salidas" name="salidas" required>
+		<label for="descripcion">Descripción:</label>
+		<input type="text" id="descripcion" name="descripcion"
+		th:value="${product.descripcion}" required>
 
-        <label for="compra">Precio de Compra:</label>
-        <input type="number" id="compra" name="compra" required>
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" name="precio"
+        th:value="${product.precio}" required>
 
-        <label for="venta">Precio de Venta:</label>
-        <input type="number" id="venta" name="venta" required>
-
-        <label for="total">Total:</label>
-        <input type="number" id="total" name="total" required>
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" name="stock"
+        th:value="${product.stock}" required>
 
         <button class="botonLimp" type="submit">Limpiar</button>
         <button type="submit">Guardar Cambios</button>
-        <a href="../paginas/Cajero_Clientes.html"><button onclick="regresar()">Regresar</button></a>
+        <a th:href="@{/admin/admininventario}"><button onclick="regresar()">Regresar</button></a>
            </form>
 
     
