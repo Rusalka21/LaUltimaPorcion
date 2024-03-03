@@ -46,24 +46,30 @@
         <table>
             <thead>
                 <tr>
-                    <th>IdCLiente</th>
+                    <th>ID</th>
                     <th>Nombre</th>
-                    <th>Dni</th>
+                    <th>DNI</th>
                     <th>Correo Electrónico</th>
                     <th>Rol</th>
+                    <th>Username</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody id="history-list">
+            <tbody id="history-list" th:each="usuario:${usuarios}">
                 <tr>
-                    <td>id</td>
-                    <td>hola</td>
-                    <td>hola</td>
-                    <td>hola</td>
-                    <td>hola</td>
-                    <td><a th:href="@{/admin/usuariosedit}">
-                        <button><i class="fa-solid fa-pen-to-square"></i></button>
-                    </a><button><i class="fa-solid fa-trash"></i></button></td>
+                    <td th:text="${usuario.id_usuario}"></td>
+                    <td th:text="${usuario.nombre}"></td>
+                    <td th:text="${usuario.dni}"></td>
+                    <td th:text="${usuario.email}"></td>
+                    <td th:text="${usuario.tipo_usuario}"></td>
+                    <td th:text="${usuario.username}"></td>
+                    <td>
+						<a th:href="@{'/admin/usuariosedit/' + ${usuario.id_usuario} }">
+                        	<button type="button"><i class="fa-solid fa-pen-to-square"></i></button>
+                        </a>
+                        <a th:href="@{'/admin/deleteusuario/' + ${usuario.id_usuario} }">
+	                    	<button type="button" onclick="eliminar()"><i class="fa-solid fa-trash"></i></button></td>
+	                    </a>
                 </tr>           
                 </tbody>
         </table>

@@ -46,37 +46,35 @@
         <table>
             <thead>
                 <tr>
-                    <th>Código Producto</th>
-                    <th>Nombre</th>
+                    <th>ID</th>
+                    <th>Nombre</th>                    
+                    <th>Tipo</th>
+                    <th>Unidad</th>
                     <th>Descripción</th>
-                    <th>Entradas</th>
-                    <th>Fecha</th>
-                    <th>Salida</th>
-                    <th>Precio Compra</th>
-                    <th>Precio Venta</th>
-                    <th>Total</th>
+                    <th>Precio</th>
+                    <th>Stock</th>                    
                     <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody id="history-list">
+            <tbody id="history-list" th:each="product:${products}">
                 <tr>
-                    <td>id</td>
-                    <td>hola</td>
-                    <td>hola</td>
-                    <td>hola</td>
-                    <td>hola</td>
-                    <td>hola</td>
-                    <td>hola</td>
-                    <td>hola</td>
-                    <td>hola</td>
-                    <td><div class="Botones">
-                        <a th:href="@{/admin/inventarioedit}">
-                            <button><i class="fa-solid fa-pen-to-square"></i></button>
-                        </a>
-                      
-                        <button><i class="fa-solid fa-trash"></i></button>
-                    </div>
-                 </td>
+                    <td th:text="${product.id_producto}"></td>
+                    <td th:text="${product.nombre}"></td>
+                    <td th:text="${product.tipo}"></td>
+                    <td th:text="${product.unidad}"></td>
+                    <td th:text="${product.descripcion}"></td>
+                    <td th:text="${product.precio}"></td>
+                    <td th:text="${product.stock}"></td>                                       
+                    <td>
+						<div class="Botones">
+		                    <a th:href="@{'/admin/inventarioedit/' + ${product.id_producto}}">
+		                        <button type="button"><i class="fa-solid fa-pen-to-square"></i></button>
+		                    </a>
+		                  	<a th:href="@{'/admin/deleteproduct/' + ${product.id_producto}}">
+		                    	<button type="button" onclick="eliminar()"><i class="fa-solid fa-trash"></i></button>
+	                    	</a>
+	                	</div>
+                 	</td>
                 </tbody>
         </table>
     
