@@ -29,6 +29,11 @@ public class ClienteService {
 		return clienteRepository.findById(id).orElse(null);
 	}
 	
+	public Cliente getClienteByDni(Long dni) {
+		
+		return clienteRepository.findByDni(dni).orElse(null);
+	}
+	
 	public void deleteCliente(int id) {
 		
 		clienteRepository.deleteById(id);
