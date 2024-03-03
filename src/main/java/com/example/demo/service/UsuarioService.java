@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,9 +30,16 @@ public class UsuarioService {
 		return usuarioRepository.save(usuario);
 	}
 	
-	public void deleteUsuario(int id) {
+	public void deleteUsuario(int id) {		
 		
 		usuarioRepository.deleteById(id);
+	}	
+	
+	public Usuario autenticar(String username, String contrasena) {
+		
+		Optional<Usuario> optionalUsuario = usuarioRepository.findByUsernameAndContrasena(username, contrasena);
+		
+		return optionalUsuario.orElse(null);
 	}
 
 }
