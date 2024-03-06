@@ -487,7 +487,7 @@ button:hover {
     display: block;
 }
 
-/*Clienbtes*/
+/*Clientes*/
 
 .Clientes {
     margin: 4% 24%;
@@ -534,6 +534,55 @@ button:hover {
 }
 
 .Clientes button:hover {
+    background-color: #733ca7;
+}
+
+/*Usuarios*/
+
+.Usuarios {
+    margin: 4% 24%;
+    height:2000px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    width: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.Usuarios h1{
+    margin-left:60px;
+
+}
+
+.Usuarios label {
+    margin-left:60px;
+    display: block;
+    margin-bottom: 8px;
+    font-size:22px;
+}
+
+.Usuarios input {
+    margin-left:60px;
+    font-size: 19px;
+    width: 90%;
+    padding: 17px;
+    margin-bottom: 25px;
+    box-sizing: border-box;
+}
+
+.Usuarios button {
+    margin-left:60px;
+    background-color: #e1a6f8;
+    font-size: 19px;
+    color: #fff;
+    padding: 22px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.Usuarios button:hover {
     background-color: #733ca7;
 }
 

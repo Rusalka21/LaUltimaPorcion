@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+		integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<title>Ventas</title>
+</head>
+
+<body>
+	<nav class="nav1">
+		<a th:href="@{/cajero/inicio}">
+			<img th:src="@{/img/logo2.JPG}" alt="Logo" />
+		</a>
+		<ul class="ul1">
+			<li class="prim">
+				<a th:href="@{/cajero/grabarventa}">Gestión Ventas</a>
+			</li>
+			<li class="prim">
+				<a th:href="@{/cajero/clientes}">Clientes</a>
+			</li>
+			<li class="prim">
+				<a th:href="@{/cajero/historialventas}">Historial de Ventas</a>
+			</li>
+			<li class="prim">
+				<a th:href="@{/cajero/cierrecaja}">Cierre de Caja</a>
+			</li>
+
+
+		</ul>
+		<div class="navigation">
+			<div class="user-dropdown">
+				<button class="user-btn">
+					<i class="user-icon fa-solid fa-user" id="admin"></i> Cajero
+					<i class="arrow-icon fa-solid fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content">
+					<a th:href="@{/inicio/Login}">Cambiar Perfil</a>
+					<a th:href="@{/inicio/Cerrar}">Cerrar Sesión</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<div class="contenedorVenta">
+
+		<div class="Separar">
+			<div>
+
+				<div class="busqueda">
+					<form method="post">
+						<div class="BusquedaVenta">
+							<input type="text" placeholder="Ingresar código de Pago" />
+							<button>Buscar</button>
+						</div>
+					</form><br>
+					<div>
+						<form class="BusquedaVenta" method="post" action="/cajero/grabarventa">
+							<input type="text" placeholder="Buscar DNI" id="buscarDNI" name="buscarDNI" />
+							<button type="submit">Buscar</button>
+						</form><br>
+						<br><br>
+
+					</div>
+				</div>
+
+
+				<h2 class="Orden">ORDEN DE COMPRA</h2><br><br>
+				<h3>DATOS DEL CLIENTE</h3><br><br>
+
+				<div class="datos-cliente">
+
+					<label for="nombre">Nombre:</label>
+					<input type="text" disabled id="nombre" name="nombre" th:value="${cliente?.nombre}" required>
+
+					<label for="apellidos">Apellidos:</label>
+					<input type="text" disabled id="apellidos" name="apellidos" th:value="${cliente?.apellidos}"
+						required>
+
+					<label for="dni">DNI:</label>
+					<input type="text" disabled id="dni" name="dni" th:value="${cliente?.dni}" required>
+
+					<label for="email">Correo Electrónico:</label>
+					<input type="email" disabled id="email" name="email" th:value="${cliente?.email}" required>
+
+					<label for="direccion">Dirección:</label>
+					<input type="text" disabled id="direccion" name="direccion" th:value="${cliente?.direccion}"
+						required>
+
+					<label for="celular">Celular:</label>
+					<input type="text" disabled id="celular" name="celular" th:value="${cliente?.celular}" required>
+
+				</div>
+			</div>
+			<br /> <br />
+			<div class="detalles-pedido">
+				<table>
+					<thead>
+						<tr>
+							<th>Ref.</th>
+							<th>Descripción</th>
+							<th>Cantidad</th>
+							<th>Precio Unitario</th>
+							<th>Precio Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						<td>asdasd</td>
+						<td>asdasd</td>
+						<td>asdasd</td>
+						<td>asdasd</td>
+						<td>asdasd</td>
+					</tbody>
+				</table>
+				<br><br>
+
+				<div class="detalles-pago">
+					<table>
+						<thead>
+							<tr>
+								<th>Monto total pedido</th>
+								<th>Otros Descuentos</th>
+								<th>Total a pagar</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<td>asdasd</td>
+							<td>asdasd</td>
+							<td>asdasd</td>
+
+						</tbody>
+					</table>
+
+
+				</div>
+
+				<div class="forma-pago">
+					<input type="radio" id="pagoEfectivo" name="formaPago" />
+					<label for="pagoEfectivo">Pago en Efectivo</label>
+
+					<input type="radio" id="pagoTarjeta" name="formaPago" />
+					<label for="pagoTarjeta">Pago con Tarjeta de Crédito</label>
+
+					<input type="radio" id="pagoDigital" name="formaPago" />
+					<label for="pagoDigital">Billetera Digital</label>
+				</div>
+
+				<button onclick="realizarPago()">Realizar Pago</button>
+
+			</div>
+
+
+
+		</div>
+
+		<!-- Popup de pago realizado con éxito -->
+		<div id="popupPagoExitoso" class="popup">
+			<h3> Pago realizado con éxito.</h3>
+			<button onclick="cerrarPopup()">Cerrar</button>
+			<button onclick="cerrarPopup()">Ir a Imprimir</button>
+		</div>
+		<footer>
+			<!-- Pie de página común a todas las páginas -->
+			<p>&copy; 2024 Sistema de Ventas</p>
+		</footer>
+		<script th:src="@{/js/main.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Producto</title>
+    <!-- Agregar la referencia a los archivos CSS de Bootstrap (localmente o a través de CDN) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" href="#">Mi Aplicación</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+	   aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+	    <ul class="navbar-nav">
+	      <li class="nav-item active">
+	        <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">Acerca de</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">Productos</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">Contacto</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+	
+    <div class="container mt-5">
+        <h1 class="mt-5">Actualización de Producto</h1>
+        <form action="/productos/edit" method="post">
+			
+			<input type="hidden" th:value="${producto.codigo_producto}" name="codigo_producto" />	
+			
+            <div class="form-group">
+                <label for="nombreProducto">Nombre del Producto</label>
+                <input type="text" class="form-control" id="nombre" name="nombre"
+                 placeholder="Ingrese el nombre del Producto" th:value="${producto.nombre}" required>
+            </div>
+            <div class="form-group">
+				<label for="tipoProducto">Tipo</label>
+                <select class="form-control" id="cod_tipo" name="cod_tipo">
+					<option th:each="tipo: ${tipos}" th:value="${tipo.cod_tipo}"
+					 th:text="${tipo.tipo}" th:selected="${tipo.cod_tipo == producto.tipo.cod_tipo}"></option>
+				</select>
+            </div> 
+            <div class="form-group">
+				<label for="saborProducto">Sabor</label>
+                <select class="form-control" id="cod_sabor" name="cod_sabor">
+					<option th:each="sabor: ${sabores}" th:value="${sabor.cod_sabor}"
+					 th:text="${sabor.sabor}" th:selected="${sabor.cod_sabor == producto.sabor.cod_sabor}"></option>
+				</select>
+            </div>   
+            <div class="form-group">
+				<label for="unidadProducto">Unidad</label>
+                <select class="form-control" id="cod_unidad" name="cod_unidad">
+					<option th:each="unidad: ${unidades}" th:value="${unidad.cod_unidad}"
+					 th:text="${unidad.unidad}" th:selected="${unidad.cod_unidad == producto.unidad.cod_unidad}"></option>
+				</select>
+            </div>        
+            <div class="form-group">
+				<label for="dimensionesProducto">Dimensiones</label>
+                <select class="form-control" id="dimensiones" name="dimensiones">
+					<option value="30cm diametro 8 porciones" th:selected="${producto.dimensiones == '30cm diametro 8 porciones'}">30cm diametro 8 porciones</option>
+					<option value="50cm diametro 12 porciones" th:selected="${producto.dimensiones == '50cm diametro 12 porciones'}">50cm diametro 12 porciones</option>
+					<option value="50 cm largo x 12 cm ancho 8 porciones" th:selected="${producto.dimensiones == '50 cm largo x 12 cm ancho 8 porciones'}">50 cm largo x 12 cm ancho 8 porciones</option>
+					<option value="70 cm largo x 12 cm ancho 12 porciones" th:selected="${producto.dimensiones == '70 cm largo x 12 cm ancho 12 porciones'}">70 cm largo x 12 cm ancho 12 porciones</option>
+					<option value="40cm diametro 10 porciones" th:selected="${producto.dimensiones == '40cm diametro 10 porciones'}">40cm diametro 10 porciones</option>
+					<option value="12cm x 6cm" th:selected="${producto.dimensiones == '12cm x 6cm'}">12cm x 6cm</option>
+					<option value="10 cm diametro" th:selected="${producto.dimensiones == '10 cm diametro'}">10 cm diametro</option>
+					<option value="Porcion personal" th:selected="${producto.dimensiones == 'Porcion personal'}">Porcion personal</option>
+				</select>
+            </div>     
+            <div class="form-group">
+                <label for="precioProducto">Precio</label>
+                <input type="text" class="form-control" id="precio" name="precio"
+                 placeholder="Ingrese el precio del Producto" th:value="${producto.precio}" required>
+            </div>
+            <div class="form-group">
+                <label for="stockProducto">Stock</label>
+                <input type="text" class="form-control" id="stock" name="stock"
+                 placeholder="Ingrese el stock del Producto" th:value="${producto.stock}" required>
+            </div>                               
+
+            <button type="submit" class="btn btn-primary">Registrar Producto</button>
+        </form>
+    </div>
+    <br>
+    <br>
+    
+    <!-- Agregar la referencia a los archivos JavaScript de Bootstrap (localmente o a través de CDN) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -11,6 +11,7 @@
 <title>Página Principal</title>
 </head>
 <body>
+<<<<<<< HEAD
 	<div class="login-container">
 		<img th:src="@{/img/logo2.JPG}" alt="">
 		<h1>Iniciar Sesión</h1>
@@ -30,4 +31,21 @@
 	</div>
 	<script th:src="@{/js/main.js}"></script>
 </body>
+=======
+  <div class="login-container">
+    <img th:src="@{/img/logo2.JPG}" alt="">
+    <h1>Iniciar Sesión</h1>
+     <img th:src="@{/img/usuario .png}" class="usuLog" alt="">    
+<form action="/login/autenticar" method="post">
+        <label for="username">Usuario:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" required>
+        <br>
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+</div>
+<script th:src="@{/js/main.js}"></script></body>
+>>>>>>> b2deaadacd137a2aee6138a60571fd8d960e97b8
 </html>

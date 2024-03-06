@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+	<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
+      <title>Inicio</title>
+</head>
+<body>
+    <nav class="nav1">
+      <a th:href="@{/admin/admininicio}">
+    	<img th:src="@{/img/logo2.JPG}" alt="Logo" />
+		</a>
+        <ul class="ul1">
+            <li class="prim">
+                <a th:href="@{/admin/adminpedidos}">Historial de Pedidos</a>
+            </li>
+            <li class="prim">
+                <a th:href="@{/admin/admininventario}">Inventario</a>
+            </li>
+            <li class="prim">
+                <a th:href="@{/admin/admingestionclientes}">Gestión Clientes</a>
+            </li>
+            <li class="prim">
+                <a th:href="@{/admin/adminusuarios}">Gestión de Usuarios</a>
+            </li>
+         
+         
+        </ul>
+        <div class="navigation">
+            <div class="user-dropdown">
+                <button class="user-btn">
+                    <i class="user-icon fa-solid fa-user" id="admin"></i> Cajero
+                    <i class="arrow-icon fa-solid fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a th:href="@{/inicio/Login}">Cambiar Perfil</a>
+                    <a th:href="@{/inicio/Cerrar}">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>    </nav>
+ <form class="Usuarios" action="/admin/usuariosedit" method="post"><br><br>
+        <h1>Editar Usuario</h1><br><br>
+        
+        <input type="hidden" th:value="${usuario.id_usuario}" name="id_usuario">
+        
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre"
+        th:value="${usuario.nombre}" required>
+        
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos"
+        th:value="${usuario.apellidos}" required>
+
+        <label for="dni">DNI:</label>
+        <input type="number" id="dni" name="dni"
+        th:value="${usuario.dni}" required>
+    
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email"
+        th:value="${usuario.email}" required>
+        
+        <label for="celular">Número de teléfono:</label>
+        <input type="number" id="celular" name="celular"
+        th:value="${usuario.celular}" required>
+        
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"
+        th:value="${usuario.username}" required>
+    
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena"
+        th:value="${usuario.contrasena}" required>
+    
+        <div class="form-group">
+			<label for="tipo_usuario">Rol:</label>
+	            <select class="form-control" id="tipo_usuario" name="tipo_usuario">
+					<option value="" disabled selected hidden>Seleccione un Tipo de Usuario</option>
+					<option value="Vendedor" th:selected="${usuario.tipo_usuario == 'Vendedor'}">Vendedor</option>
+					<option value="Cajero" th:selected="${usuario.tipo_usuario == 'Cajero'}">Cajero</option>
+					<option value="Administrador" th:selected="${usuario.tipo_usuario == 'Administrador'}">Administrador</option>
+				</select>
+        </div>
+
+        <button type="submit">Guardar Cambios</button>
+        <a th:href="@{/admin/adminusuarios}"><button type="button" onclick="regresar()">Regresar</button></a>
+           </form>
+            <script th:src="@{/js/main.js}"></script>
+</body>
+</html>
