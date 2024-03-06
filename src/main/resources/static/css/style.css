@@ -512,7 +512,8 @@ button:hover {
     font-size:22px;
 }
 
-.Clientes input {
+.Clientes input,
+.Clientes select {
     margin-left:60px;
     font-size: 19px;
     width: 90%;
@@ -802,4 +803,9 @@ button {
 
 .Ingresar button{
     margin: 15%;
+}
+
+.boton-deshabilitado {
+    background-color: #d3d3d3; /* Color gris claro */
+    cursor: not-allowed; /* Cambia el cursor a 'no permitido' */
 }
