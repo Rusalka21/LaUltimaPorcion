@@ -504,12 +504,11 @@ function mostrarResumen(data) {
     document.getElementById("resumenSaldoEfectivo").textContent = data.saldoEfectivo.toFixed(2);
     document.getElementById("resumenSaldoTC").textContent = data.saldoTarjetaCredito.toFixed(2);
 
-<<<<<<< HEAD
     // Calcular y mostrar el total
     var total = data.saldoApertura + data.saldoEfectivo + data.saldoTarjetaCredito;
     document.getElementById("resumenTotal").textContent = total.toFixed(2);
 }
-=======
+
 function regresar() {
     alert("Volviendo atrás...");
 }
@@ -518,19 +517,7 @@ function eliminar() {
     alert("Registro eliminado");
 }
 
-/*Pago*/
-// Función para mostrar el popup de pago exitoso
-function realizarPago() {
-    // Agrega aquí la lógica para procesar el pago
-    // Mostrar el popup cuando el pago sea exitoso
-    document.getElementById("popupPagoExitoso").style.display = "block";
-}
-
 // Función para cerrar el popup
 function cerrarPopup() {
     document.getElementById("popupPagoExitoso").style.display = "none";
 } 
-
-
-
->>>>>>> b2deaadacd137a2aee6138a60571fd8d960e97b8

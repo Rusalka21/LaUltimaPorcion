@@ -9,7 +9,7 @@
 </head>
 <body>
     <nav class="nav1">
-       <a th:href="@{/cajero/inicio}">
+       <a th:href="@{/inicio/admin}">
     	<img th:src="@{/img/logo2.JPG}" alt="Logo" />
 		</a>
         <ul class="ul1">
@@ -45,7 +45,7 @@
 	        <label for="nombre">Nombre Cliente:</label>
 	        <input type="text" id="nombre" name="nombre" th:field="${cliente.nombre}">
 	
-	        <label for="apellido">Razon Social:</label>
+	        <label for="apellido">Numero Documento:</label>
 	        <input type="text" id="razonSocial" name="razonSocial" th:field="${cliente.razonSocial}">
 	
 	        <label for="email">Correo Electrónico:</label>

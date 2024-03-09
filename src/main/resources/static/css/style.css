@@ -155,43 +155,7 @@ button i {
     border-color: #8b45a0;
 }
 /*contenido */
-.cake-container {
-    display: flex;
-    justify-content: space-around; 
-    max-width:85%; 
-    margin: 40px auto; 
-}
-
-.cake-item {
-    text-align: center;
-    padding: 20px;
-    border: 2px solid #C6C6C6;
-}
-
-.cake-item img {
-    max-width: 90%;
-    height: 70%;
-    margin-bottom: 10px;
-}
-.cake-item p {
-    color:#807d7d;
-
-}
-
-.cake-item  button {
-    margin: 10px;
-    background-color:  #E2BAE0;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color:  #9e5c9b;
-}
-
+ 
 /*modal*/
 
 .modal {
@@ -795,7 +759,7 @@ button {
 .popup {
     width: 15%; 
     position: fixed;
-    height:10%;
+    height:20%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -857,4 +821,40 @@ button {
 .boton-deshabilitado {
     background-color: #d3d3d3; /* Color gris claro */
     cursor: not-allowed; /* Cambia el cursor a 'no permitido' */
+}
+
+.cake-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en filas */
+    justify-content: space-between; /* Espacio entre los elementos */
+    max-width: 85%;
+    margin: 40px auto;
+}
+
+.cake-item {
+    flex-basis: calc(33.33% - 20px); /* Ancho para tres elementos en una fila */
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #C6C6C6;
+    margin-bottom: 20px; /* Espacio entre las filas */
+}
+
+.cake-item img {
+    max-width: 100%;
+    height: auto; /* Ajusta la altura proporcionalmente */
+    margin-bottom: 10px;
+}
+
+.cake-item p {
+    color: #807d7d;
+}
+
+.cake-item button {
+    margin: 10px;
+    background-color: #E2BAE0;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }

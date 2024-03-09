@@ -73,6 +73,7 @@ public class ApiController {
 	
 	@PostMapping("/registrarPedido")
 	public Pedido registrarPedido(@RequestBody PedidoRequest request) {
+		System.out.print("revisar: " + request.getPedido().getNumPedido());
 		return pedidoService.guardarPedido(request);		
 	}
 	
